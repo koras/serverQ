@@ -19,8 +19,8 @@ class UserController extends QuestionController
         $this->userService = $userService;
     }
 
-    public function  check(Request $request)
+    public function check(Request $request)
     {
-        return $this->userService->checkOrCreateUser($request->all());
+        return $this->userService->checkOrCreateUser($request);
     }
 }

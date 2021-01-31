@@ -5,10 +5,16 @@ namespace App\Http\Services;
 
 use App\Http\Contracts\UserServiceInterface;
 use App\Http\Contracts\Repositories\UserRepInterface;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
+ 
 
 class UserService   implements UserServiceInterface
 {
+
+    private  $secret;
+    private  $secretKey = "question";
     
     private $userRepInterface;
 
@@ -18,24 +24,42 @@ class UserService   implements UserServiceInterface
     }
 
 
-    public function  checkOrCreateUser($data) : Array {
-
-
-        return [];
+    public function  checkOrCreateUser($data)  {
+        // secret - генерирует телефон
+        $userData = $this->checkUser($data->id, $this -> getSecret($data->secret));
+        if($userData){
+            return $userData;
+        } 
+      return   $this->register($data);
     }
 
 
-    private function checkUser()
+    private function checkUser($id, $secret)
     {
-        //
+      return  $this->userRepInterface->show($id, $secret);
     }
     
+    private function register($data)
+    {      
+        
+        $params = [
+            'secret_hidden'=>$data->secret,
+            'ip'=>$this->getIp(),
+            'secret'=> $this->getSecret($data->secret)
+        ];
 
-
-    private function register()
-    {
-        //
+       return  $this->userRepInterface->createItem($params);
     }
 
 
+    private function getSecret($secret) : string
+    {        
+      return md5($this->secretKey. $secret);
+    }
+     
+
+    private function getIp(){
+        $req = Request();
+        return $req->ip();
+    }
 }

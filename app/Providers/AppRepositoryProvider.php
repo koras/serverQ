@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class AppRepositoryProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -13,12 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-        $this->app->bind("App\Http\Contracts\UserServiceInterface", "App\Http\Services\UserService");
-
-
-      //  $this->app->bind(Illuminate\Database\Eloquent::class, GCCA\Repositories\Entreprise\EloquentEntrepriseRepositor::class);  
-
+        $this->app->bind("App\Http\Contracts\Repositories\UserRepInterface", "App\Http\Repositories\Users");
     }
 
     /**
@@ -28,7 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
         //
     }
 }

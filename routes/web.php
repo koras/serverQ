@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 // проверка 
 Route::any('/user', 'UserController@check');
+ 
 
 
 
