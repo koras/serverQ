@@ -15,10 +15,8 @@ class AppServiceProvider extends ServiceProvider
     {
 
         $this->app->bind("App\Http\Contracts\UserServiceInterface", "App\Http\Services\UserService");
-
-
+        $this->app->bind("App\Http\Contracts\QuestionsServiceInterface", "App\Http\Services\QuestionService");
       //  $this->app->bind(Illuminate\Database\Eloquent::class, GCCA\Repositories\Entreprise\EloquentEntrepriseRepositor::class);  
-
     }
 
     /**

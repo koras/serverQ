@@ -19,7 +19,16 @@ use Illuminate\Support\Facades\Route;
 Route::any('/user', 'UserController@check');
  
 
+// проверка 
+Route::any('/user', 'UserController@check');
 
+
+// Получение списка вопросов
+Route::any('/questions', 'QuestionsController@index');
+//Создание вопроса
+Route::get('/question/create', 'QuestionsController@create'); 
+// Получение вопроса
+Route::any('/question/{id}', 'QuestionsController@one'); 
 
 Route::get('/', function () {
     return view('welcome');

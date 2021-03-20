@@ -9,7 +9,7 @@ use App\Http\Contracts\UserServiceInterface;
 
 use Illuminate\Http\Request;
 
-class UserController extends QuestionController
+class UserController extends ApiController
 { 
 
     private $userService;

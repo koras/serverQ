@@ -12,10 +12,11 @@ class AppRepositoryProvider extends ServiceProvider
      * @return void
      */
     public function register()
+
     {
         $this->app->bind("App\Http\Contracts\Repositories\UserRepInterface", "App\Http\Repositories\Users");
+        $this->app->bind("App\Http\Contracts\Repositories\QuestionRepInterface", "App\Http\Repositories\Questions");
     }
-
     /**
      * Bootstrap any application services.
      *

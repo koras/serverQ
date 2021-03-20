@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 use Illuminate\Http\Request;
 
-class QuestionController extends BaseController
+class ApiController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
